@@ -1,0 +1,79 @@
+// css footer
+footer {
+    background-color: $black-bg-cl;
+    height: var(--heightHeader);
+
+    .container {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .copyright {
+            color: $white-cl;
+            font-family: "Proxima Nova";
+
+        }
+
+        .logo-footer {
+            left: 50%;
+            transform: translateX(-50%);
+
+            img {
+                width: 130px;
+            }
+        }
+
+        .backtotop {
+            a {
+
+                font-family: Proxima Nova;
+                color: $white-cl;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+        }
+
+        @include sm {
+            .copyright {
+                font-size: 12px;
+            }
+
+            .logo-footer {
+                img {
+                    width: 100px;
+                }
+            }
+        }
+
+        @include xs {
+            .copyright {
+                font-size: 12px;
+            }
+
+            .logo-footer {
+                img {
+                    width: 100px;
+                }
+            }
+        }
+
+        @include xxs {
+            display: flex;
+            flex-direction: column;
+            padding: 5px 0;
+
+            .logo-footer {
+                left: 0;
+                transform: translateX(0);
+
+                img {
+                    width: 100px;
+                }
+            }
+        }
+    }
+
+
+
+}

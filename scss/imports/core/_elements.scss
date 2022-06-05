@@ -1,0 +1,76 @@
+// css button, title, icon, elements...
+img {
+    max-width: 100%;
+}
+
+.btnmain {
+    width: max-content;
+    border: 1px solid $white-cl;
+    padding: 10px 35px;
+    text-decoration: none;
+    color: $white-cl;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    align-items: center;
+    display: inline-flex;
+    font-family: Proxima Nova;
+
+    img {
+        // margin-left: 10px;
+        // width: 30px;
+        @include transform(translateX(0px));
+        @include transition($t);
+
+    }
+
+    &:hover {
+        img {
+            @include transform(translateX(5px));
+            @include transition($t);
+        }
+
+
+    }
+}
+
+.btn {
+    width: fit-content;
+    text-decoration: none;
+    font-size: $fz-text;
+    color: $black-cl;
+    display: inline-flex;
+    align-items: center;
+    font-family: Proxima Nova;
+    letter-spacing: 2px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    img {
+        margin-left: 10px;
+        width: 30px;
+        @include transform(translateX(0px));
+        @include transition($t);
+    }
+
+    &::before {
+        content: '';
+        width: 35px;
+        height: 2px;
+        background: $yellow-cl;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+    }
+
+    &:hover {
+        img {
+            @include transform(translateX(10px));
+            @include transition($t);
+        }
+    }
+
+}

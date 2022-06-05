@@ -1,0 +1,60 @@
+// console.log('Hello CFD');
+let lang = document.querySelector('.lang')
+let langCurrent = document.querySelector(' .lang .lang__current span')
+let langOpt = document.querySelector('.lang .lang__options')
+let langItem = document.querySelectorAll('.lang .lang__options .lang__options-item')
+lang.addEventListener('click', function(e){
+    e.stopPropagation();
+    langOpt.classList.toggle('active'); 
+});
+
+langItem.forEach(function(item){
+    item.addEventListener('click', function(){
+        let langText = this.textContent;
+        let langCurrentSpan = langCurrent.textContent;
+        langCurrent.innerHTML = langText;
+        this.innerHTML = langCurrentSpan;
+    })
+})    
+
+
+let backtop = document.querySelector('.backtop')
+backtop.addEventListener('click', function(){
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+})
+let backgroundHeader = document.querySelector('header')
+let positionProduct = document.querySelector('.products').offsetTop;
+window.addEventListener('scroll', function(){
+    let positionScroll = window.pageYOffset;
+    if(positionScroll > positionProduct){
+        backtop.style.display = 'block';
+        backgroundHeader.style.backgroundColor = 'black';
+        langOpt.style.color = 'black';
+    }
+    else{
+        backtop.style.display = 'none';
+        backgroundHeader.style.backgroundColor = 'transparent';
+        langOpt.style.color = 'white';
+
+    }
+})
+
+let menu = document.querySelectorAll('header .menu a');
+let heightHeader = document.querySelector('header').offsetHeight;
+menu.forEach(function(element){
+    element.addEventListener('click',function(e){
+        e.preventDefault();
+        let href = element.getAttribute('href');
+        let className = href.replace('#','');
+        let section = document.querySelector('.' + className) 
+        positionSection = section.offsetTop;
+        window.scrollTo({
+            top: positionSection - heightHeader,
+            behavior: 'smooth'
+        })
+    })
+
+})

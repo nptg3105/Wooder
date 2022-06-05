@@ -1,0 +1,347 @@
+// css header
+/* Header */
+
+header {
+    width: 100%;
+    height: var(--heightHeader);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 400;
+
+
+    &.active {
+        background-color: $black-cl;
+    }
+
+    .container-fluid {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        .logo {
+            a {
+                .hidden {
+                    display: none;
+                }
+
+                img {
+                    width: 130px;
+                }
+            }
+        }
+
+        .menu {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            ul {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+
+                li {
+                    list-style: none;
+
+                    a {
+                        color: white;
+                        padding: 0 16px;
+                        text-decoration: none;
+                        height: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: $fz-text;
+                        font-weight: normal;
+                        text-transform: uppercase;
+                        font-family: Proxima Nova;
+                        position: relative;
+
+                        &:hover {
+                            color: $yellow-cl;
+                            @include transition($t);
+                        }
+
+                        &::after {
+                            content: '';
+                            display: none;
+                            height: 2px;
+                            width: 100%;
+                            background-color: #fff;
+                            position: absolute;
+                            bottom: 25%;
+                            left: 0;
+                            @include transition ($t);
+                        }
+
+                        &.active {
+                            &::after {
+                                display: block;
+                                @include transition ($t);
+                            }
+                        }
+                    }
+
+
+                }
+            }
+
+
+
+            @include sm {}
+        }
+
+        .right {
+            height: 100%;
+            display: inline-flex;
+
+            .lang {
+                height: 100%;
+                position: relative;
+                cursor: pointer;
+                display: inline-flex;
+
+                i {
+                    height: 100%;
+                    display: flex;
+                    width: 10px;
+                    align-items: center;
+                    @include transition($t);
+
+                    &.active {
+                        transform: rotate(180deg);
+                        @include transition($t);
+                    }
+                }
+
+                &__current {
+                    height: 100%;
+                    display: flex;
+                    // justify-content: space-between;
+                    align-items: center;
+
+
+                    span {
+                        text-decoration: none;
+                        color: white;
+                        margin-right: 10px;
+                        font-family: Proxima Nova;
+                    }
+
+
+                }
+
+                &__options {
+                    height: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: var(--heightHeader);
+                    z-index: 198;
+                    opacity: 0;
+                    pointer-events: none;
+                    // @include visible(0);
+                    @include transition($t);
+                    cursor: pointer;
+
+                    &.active {
+                        opacity: 1;
+                        pointer-events: auto;
+                        // padding: 5px 0;
+                        display: block;
+                        text-decoration: none;
+                        color: $white-cl;
+                        text-transform: uppercase;
+                        @include transition($t);
+                        // &:hover {
+                        //     color: $yellow-cl;
+                        //     @include transition($t);
+
+                        // }
+
+                    }
+
+                    .lang__options-item {
+                        padding: 10px 0;
+                        @include transition($t);
+
+                        &:hover {
+                            color: $yellow-cl;
+                            @include transition($t);
+                        }
+                    }
+
+                }
+
+                // &:hover {
+                //     .lang__options {
+                //         @include visible(1);
+                //     }
+                // }
+            }
+        }
+
+        .btnmenu {
+            height: 25px;
+            display: none;
+            width: 50px;
+            position: relative;
+            z-index: 210;
+            margin-left: 20px;
+            cursor: pointer;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 300;
+
+            span {
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: $yellow-cl;
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+
+            }
+
+            &::before,
+            &::after {
+                content: '';
+                width: 100%;
+                height: 2px;
+                display: block;
+                background: $yellow-cl;
+                position: absolute;
+                @include transform(rotate(0deg) translateY(0px));
+                @include transition(transform 0.3s);
+            }
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+            }
+
+            &.clicked {
+                &:before {
+                    @include transform(rotate(45deg) translate(8px, 8px));
+                    @include transition(transform 0.3s);
+                }
+
+                span {
+                    opacity: 0;
+                    @include transition($t)
+                }
+
+                &:after {
+                    @include transform(rotate(-45deg) translate(8px, -8px));
+                    @include transition(transform 0.3s);
+                }
+            }
+        }
+
+
+
+
+
+
+
+        // nav {
+        //     width: 100vw;
+        //     height: 100vh;
+        //     background: $black-cl;
+        //     position: fixed;
+        //     top: 0;
+        //     left: 0;
+        //     @include transform(initial);
+        //     opacity: 1;
+        //     // visibility: hidden;
+        //     @include transition(opacity 0.3s);
+        //     display: ;
+
+        //     ul {
+        //         flex-direction: column;
+        //         justify-content: space-between;
+        //         align-items: center;
+        //         display: flex;
+
+        //         li {
+        //             margin: 0 auto;
+        //             padding: 20px;
+
+        //             a {
+        //                 color: $white-cl;
+        //                 text-transform: uppercase;
+        //                 text-decoration: none;
+        //                 align-items: center;
+        //             }
+        //         }
+        //     }
+
+        //     &.active {
+        //         opacity: 1;
+        //         pointer-events: auto;
+        //         @include transition(opacity 0.3s);
+        //     }
+        // }
+    }
+
+    // @include lg {
+
+    //     nav {
+    //         &.active {
+    //             display: none;
+    //         }
+    //     }
+    // }
+
+    // @include md {
+
+
+    //     nav {
+    //         &.active {
+    //             display: none;
+    //         }
+    //     }
+    // }
+
+    @include sm {
+        .container-fluid {
+            .right {
+                .btnmenu {
+                    display: block;
+                }
+            }
+
+            .menu {
+                display: none;
+            }
+
+            nav {
+                &.active {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    @include xs {
+        --heightHeader: 60px;
+
+        .btnmenu {
+            display: block;
+        }
+
+        nav {
+            &.active {
+                display: block;
+            }
+        }
+    }
+}
